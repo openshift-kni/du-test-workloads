@@ -8,7 +8,6 @@ Templates for a DU workload deployed with [kube-burner](https://github.com/kube-
 | BestEffort - web_server | 4 pods, 2 containers each | - 100 mc CPU, 128 Mib Memory<br>- 2 configmaps and 4 secrets<br> | Exposes 8080 port for probes |
 | BestEffort - curl_app | 4 pods, 2 containers each | - 100 mc CPU, 128 Mib Memory<br>- 2 configmaps and 4 secrets<br>- Liveness Probes (every 10 secs)| Kubelet stress with probes, ~250 KB per sec n/w traffic on Primary CNI |
 | BestEffort - kubectl_pods | 6 pods, 2 containers each | - 100 mc CPU , 128 Mib Memory<br>- 2 configmaps and 4 secrets<br>- 2 kubectl gets (every 5 sec) | Kube-api-server stress with kubectl get, ~10% increase due to workload |
-| BestEffort - storage_stress | 1 pod, 2 containers | - 100 mc CPU , 128 Mib Memory<br>- 2 configmaps and 4 secrets<br>- 1 hdd stress | Storage-io stress with stress-ng |
 
 * Total pods - 15 pods / 30 containers
 * 2 config maps and 4 secrets in each pod
