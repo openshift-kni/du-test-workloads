@@ -139,23 +139,3 @@ jobs:
             - name: secret-4
               type: secret
               path: /var/secret4
-      # Template with ptp events consumer
-      - objectTemplate: templates/ptp-events-consumer/service-account.yaml
-        replicas: 1
-      - objectTemplate: templates/ptp-events-consumer/deployment.yaml
-        replicas: 1
-        inputVars:
-          Image_ptp_consumer: '{{ or .REGISTRY "quay.io/jenchen" }}/ptp-event-consumer'
-          short_node_name: '{{ (split "." .NODE_NAME)._0 }}'
-      - objectTemplate: templates/ptp-events-consumer/service.yaml
-        replicas: 1
-      # Template with storage stress on PVC claims
-      - objectTemplate: templates/storageio/pv.yaml
-        replicas: 1
-      - objectTemplate: templates/storageio/pvc.yaml
-        replicas: 1
-      - objectTemplate: templates/storageio/deployment.yaml
-        replicas: 1
-        inputVars:
-          Image_stressng: "{{ .REGISTRY }}/fedora-stress-ng"
-          Image_nginx: "{{ .REGISTRY }}/sampleapp"
