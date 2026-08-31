@@ -20,7 +20,6 @@ spec:
       annotations:
         # Disable CPU balance with CRIO
         irq-load-balancing.crio.io: "disable"
-        cpu-load-balancing.crio.io: "disable"
         cpu-quota.crio.io: "disable"
     spec:
       runtimeClassName: {{ .performanceProfile | default "performance-openshift-node-performance-profile" }}
